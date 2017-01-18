@@ -1,0 +1,50 @@
+[
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_keyboard_arrow_down_white.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_keyboard_arrow_down_white.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_add_white.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_add_white.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_perm_identity_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_perm_identity_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_person_pin_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_person_pin_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_credit_card_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_credit_card_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_email_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_email_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_send_white.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_send_white.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_access_time_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_access_time_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_search_white.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_search_white.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_clear_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_clear_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_school_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_school_black.png"
+    }
+]
