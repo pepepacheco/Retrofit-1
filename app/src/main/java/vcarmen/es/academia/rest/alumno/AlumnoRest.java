@@ -1,6 +1,8 @@
 package vcarmen.es.academia.rest.alumno;
 
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,44 +26,50 @@ public final class AlumnoRest {
         alumnoService = restAdapter.create(AlumnoService.class);
     }
 
-    public static void getAlumnos(final ListView listAlumno, final View view) {
+    public static void getAlumnos(final ListView listAlumno, final ViewPager viewPager, final View view) {
         alumnoService.getAlumnos(new Callback<List<Alumno>>() {
             @Override
             public void success(List<Alumno> alumnos, Response response) {
                 listAlumno.setAdapter(new CustomListAdapter(alumnos, R.layout.list_alumno, view.getContext()));
+                ViewCompat.setNestedScrollingEnabled(listAlumno, true);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 errorRequest(view, error);
+                ViewCompat.setNestedScrollingEnabled(viewPager, true);
             }
         });
     }
 
-    public static void getAlumnoNombre(String nombre, final ListView listAlumno, final View view) {
+    public static void getAlumnoNombre(String nombre, final ListView listAlumno, final ViewPager viewPager, final View view) {
         alumnoService.getAlumnoNombre(nombre, new Callback<List<Alumno>>() {
             @Override
             public void success(List<Alumno> alumnos, Response response) {
                 listAlumno.setAdapter(new CustomListAdapter(alumnos, R.layout.list_alumno, view.getContext()));
+                ViewCompat.setNestedScrollingEnabled(listAlumno, true);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 errorRequest(view, error);
+                ViewCompat.setNestedScrollingEnabled(viewPager, true);
             }
         });
     }
 
-    public static void getAlumnoDni(String dni, final ListView listAlumno, final View view) {
+    public static void getAlumnoDni(String dni, final ListView listAlumno,final ViewPager viewPager, final View view) {
         alumnoService.getAlumnoDni(dni, new Callback<List<Alumno>>() {
             @Override
             public void success(List<Alumno> alumnos, Response response) {
                 listAlumno.setAdapter(new CustomListAdapter(alumnos, R.layout.list_alumno, view.getContext()));
+                ViewCompat.setNestedScrollingEnabled(listAlumno, true);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 errorRequest(view, error);
+                ViewCompat.setNestedScrollingEnabled(viewPager, true);
             }
         });
     }
@@ -92,7 +100,7 @@ public final class AlumnoRest {
         });
     }
 
-    public static void deleteAlumno(MenuItem item, final ListView listAlumno, final View view) {
+    public static void deleteAlumno(MenuItem item, final ListView listAlumno, final ViewPager viewPager, final View view) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Alumno alumno = (Alumno) listAlumno.getAdapter().getItem(info.position);
 
@@ -100,17 +108,7 @@ public final class AlumnoRest {
             @Override
             public void success(List<Alumno> alumnos, Response response) {
                 Snackbar.make(view, "Alumno " + alumno.getNombre() + " " + alumno.getApellidos() + " Eliminado", Snackbar.LENGTH_LONG).show();
-                alumnoService.getAlumnos(new Callback<List<Alumno>>() {
-                    @Override
-                    public void success(List<Alumno> alumnos, Response response) {
-                        listAlumno.setAdapter(new CustomListAdapter(alumnos, R.layout.list_alumno, view.getContext()));
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        errorRequest(view, error);
-                    }
-                });
+                getAlumnos(listAlumno, viewPager, view);
             }
 
             @Override
@@ -121,9 +119,14 @@ public final class AlumnoRest {
     }
 
     private static void errorRequest(View view, RetrofitError error) {
-        if (error.getResponse().getStatus() == 400 || error.getResponse().getStatus() == 404)
-            Snackbar.make(view, error.getResponse().getReason(), Snackbar.LENGTH_LONG).show();
+        if (error.getResponse() != null) {
+            if (error.getResponse().getStatus() == 400 || error.getResponse().getStatus() == 404)
+                Snackbar.make(view, error.getResponse().getReason(), Snackbar.LENGTH_LONG).show();
+            else
+                Snackbar.make(view, "Error Interno del servidor", Snackbar.LENGTH_LONG).show();
+        }
         else
-            Snackbar.make(view, "Error Interno del servidor", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, "No ha sido posible conectar al servidor", Snackbar.LENGTH_LONG).show();
+
     }
 }

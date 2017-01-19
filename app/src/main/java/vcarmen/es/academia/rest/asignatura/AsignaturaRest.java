@@ -1,6 +1,8 @@
 package vcarmen.es.academia.rest.asignatura;
 
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -24,44 +26,55 @@ public final class AsignaturaRest {
         asignaturaService = restAdapter.create(AsignaturaService.class);
     }
 
-    public static void getAsignaturas(final ListView listAsignatura, final View view) {
+    public static void getAsignaturas(final ListView listAsignatura, final ViewPager viewPager, final View view) {
         asignaturaService.getAsignaturas(new Callback<List<Asignatura>>() {
             @Override
             public void success(List<Asignatura> asignaturas, Response response) {
                 listAsignatura.setAdapter(new CustomListAdapter(asignaturas, R.layout.list_asignatura, view.getContext()));
+                ViewCompat.setNestedScrollingEnabled(listAsignatura, true);
             }
 
             @Override
             public void failure(RetrofitError error) {
                 errorRequest(view, error);
+                ViewCompat.setNestedScrollingEnabled(viewPager, true);
+
             }
         });
     }
 
-    public static void getAsignaturaNombre(String nombre, final ListView listAsignatura, final View view) {
+    public static void getAsignaturaNombre(String nombre, final ListView listAsignatura, final ViewPager viewPager, final View view) {
         asignaturaService.getAsignaturaNombre(nombre, new Callback<List<Asignatura>>() {
             @Override
             public void success(List<Asignatura> asignaturas, Response response) {
                 listAsignatura.setAdapter(new CustomListAdapter(asignaturas, R.layout.list_asignatura, view.getContext()));
+                ViewCompat.setNestedScrollingEnabled(listAsignatura, true);
+
             }
 
             @Override
             public void failure(RetrofitError error) {
                 errorRequest(view, error);
+                ViewCompat.setNestedScrollingEnabled(viewPager, true);
+
             }
         });
     }
 
-    public static void getAsiganturaCiclo(String ciclo, final ListView listAsignatura, final View view) {
+    public static void getAsignaturaCiclo(String ciclo, final ListView listAsignatura, final ViewPager viewPager, final View view) {
         asignaturaService.getAsignaturaCiclo(ciclo, new Callback<List<Asignatura>>() {
             @Override
             public void success(List<Asignatura> asignaturas, Response response) {
                 listAsignatura.setAdapter(new CustomListAdapter(asignaturas, R.layout.list_asignatura, view.getContext()));
+                ViewCompat.setNestedScrollingEnabled(listAsignatura, true);
+
             }
 
             @Override
             public void failure(RetrofitError error) {
                 errorRequest(view, error);
+                ViewCompat.setNestedScrollingEnabled(viewPager, true);
+
             }
         });
     }
@@ -93,7 +106,7 @@ public final class AsignaturaRest {
         });
     }
 
-    public static void deleteAsigantura(MenuItem item, final ListView listAsignatura, final View view) {
+    public static void deleteAsignatura(MenuItem item, final ListView listAsignatura, final ViewPager viewPager, final View view) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Asignatura asignatura = (Asignatura) listAsignatura.getAdapter().getItem(info.position);
 
@@ -101,17 +114,7 @@ public final class AsignaturaRest {
             @Override
             public void success(List<Asignatura> asignaturas, Response response) {
                 Snackbar.make(view, "Asignatura " + asignatura.getNombre() + " Eliminada", Snackbar.LENGTH_LONG).show();
-                asignaturaService.getAsignaturas(new Callback<List<Asignatura>>() {
-                    @Override
-                    public void success(List<Asignatura> asignaturas, Response response) {
-                        listAsignatura.setAdapter(new CustomListAdapter(asignaturas, R.layout.list_asignatura, view.getContext()));
-                    }
-
-                    @Override
-                    public void failure(RetrofitError error) {
-                        errorRequest(view, error);
-                    }
-                });
+                AsignaturaRest.getAsignaturas(listAsignatura, viewPager, view);
             }
 
             @Override
@@ -122,9 +125,13 @@ public final class AsignaturaRest {
     }
 
     private static void errorRequest(View view, RetrofitError error) {
-        if (error.getResponse().getStatus() == 400 || error.getResponse().getStatus() == 404)
-            Snackbar.make(view, error.getResponse().getReason(), Snackbar.LENGTH_LONG).show();
+        if (error.getResponse() != null) {
+            if (error.getResponse().getStatus() == 400 || error.getResponse().getStatus() == 404)
+                Snackbar.make(view, error.getResponse().getReason(), Snackbar.LENGTH_LONG).show();
+            else
+                Snackbar.make(view, "Error Interno del servidor", Snackbar.LENGTH_LONG).show();
+        }
         else
-            Snackbar.make(view, "Error Interno del servidor", Snackbar.LENGTH_LONG).show();
+            Snackbar.make(view, "No ha sido posible conectar al servidor", Snackbar.LENGTH_LONG).show();
     }
 }

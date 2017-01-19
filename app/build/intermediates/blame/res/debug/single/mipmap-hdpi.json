@@ -16,12 +16,12 @@
         "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-hdpi\\ic_person_pin_black.png"
     },
     {
-        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_perm_identity_black.png",
-        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-hdpi\\ic_perm_identity_black.png"
-    },
-    {
         "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_school_black.png",
         "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-hdpi\\ic_school_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_perm_identity_black.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-hdpi\\ic_perm_identity_black.png"
     },
     {
         "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_clear_black.png",

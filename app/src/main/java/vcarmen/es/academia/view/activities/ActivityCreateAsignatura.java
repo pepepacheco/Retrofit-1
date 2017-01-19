@@ -147,7 +147,7 @@ public class ActivityCreateAsignatura extends AppCompatActivity {
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                asignatura = new Asignatura(getIntent().getIntExtra("id", 0), nombre.getText().toString(), ciclo.getText().toString(), curso.getText().toString(), Integer.parseInt(horas.getText().toString()));
+                asignatura = new Asignatura(null, nombre.getText().toString(), ciclo.getText().toString(), curso.getText().toString(), Integer.parseInt(horas.getText().toString()));
                 AsignaturaRest.putAsigantura(view, asignatura);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("soy", 1);

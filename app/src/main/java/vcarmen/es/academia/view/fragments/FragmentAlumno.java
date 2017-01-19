@@ -8,6 +8,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SearchView;
 import android.view.ContextMenu;
@@ -30,6 +31,7 @@ public class FragmentAlumno extends Fragment {
     private TabLayout tabLayout;
     private SwipeRefreshLayout refesh;
     private Bundle bundle = new Bundle();
+    private ViewPager viewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,9 +51,10 @@ public class FragmentAlumno extends Fragment {
         tabLayout = (TabLayout) getActivity().findViewById(R.id.tabs);
 
         listAlumno = (ListView) getView().findViewById(R.id.listAlumno);
-        ViewCompat.setNestedScrollingEnabled(listAlumno, true);
 
-        AlumnoRest.getAlumnos(listAlumno, getView());
+        viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
+
+        AlumnoRest.getAlumnos(listAlumno, viewPager, getView());
 
         listAlumno.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -74,7 +77,7 @@ public class FragmentAlumno extends Fragment {
         refesh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                AlumnoRest.getAlumnos(listAlumno, getView());
+                AlumnoRest.getAlumnos(listAlumno, viewPager, getView());
                 if (refesh.isRefreshing()) {
                     refesh.setRefreshing(false);
                 }
@@ -99,14 +102,14 @@ public class FragmentAlumno extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 if (bundle.get("categoria") != null) {
                     if (bundle.get("categoria").toString() == "dni")
-                        AlumnoRest.getAlumnoDni(query, listAlumno, getView());
+                        AlumnoRest.getAlumnoDni(query, listAlumno, viewPager, getView());
                     else if (bundle.get("categoria").toString() == "nombre")
-                        AlumnoRest.getAlumnoNombre(query, listAlumno, getView());
+                        AlumnoRest.getAlumnoNombre(query, listAlumno, viewPager, getView());
                     else
-                        AlumnoRest.getAlumnoNombre(query, listAlumno, getView());
+                        AlumnoRest.getAlumnoNombre(query, listAlumno, viewPager, getView());
                 }
                 else
-                    AlumnoRest.getAlumnoNombre(query, listAlumno, getView());
+                    AlumnoRest.getAlumnoNombre(query, listAlumno, viewPager, getView());
 
                 return true;
             }
@@ -134,7 +137,7 @@ public class FragmentAlumno extends Fragment {
 
                 break;
             case R.id.deleteAlumno:
-                AlumnoRest.deleteAlumno(item, listAlumno, getView());
+                AlumnoRest.deleteAlumno(item, listAlumno, viewPager, getView());
         }
         return super.onContextItemSelected(item);
     }

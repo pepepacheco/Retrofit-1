@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SearchView;
 import android.view.ContextMenu;
@@ -30,6 +30,7 @@ public class FragmentAsignatura extends Fragment {
     private TabLayout tabLayout;
     private SwipeRefreshLayout refesh;
     private Bundle bundle = new Bundle();
+    private ViewPager viewPager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -49,9 +50,10 @@ public class FragmentAsignatura extends Fragment {
         tabLayout = (TabLayout)  getActivity().findViewById(R.id.tabs);
 
         listAsignatura = (ListView) getView().findViewById(R.id.listAsignatura);
-        ViewCompat.setNestedScrollingEnabled(listAsignatura, true);
 
-        AsignaturaRest.getAsignaturas(listAsignatura, getView());
+        viewPager = (ViewPager) getActivity().findViewById(R.id.viewpager);
+
+        AsignaturaRest.getAsignaturas(listAsignatura, viewPager, getView());
 
         listAsignatura.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,7 +75,7 @@ public class FragmentAsignatura extends Fragment {
         refesh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                AsignaturaRest.getAsignaturas(listAsignatura, getView());
+                AsignaturaRest.getAsignaturas(listAsignatura, viewPager, getView());
                 if (refesh.isRefreshing()) {
                     refesh.setRefreshing(false);
                 }
@@ -99,14 +101,14 @@ public class FragmentAsignatura extends Fragment {
             public boolean onQueryTextSubmit(String query) {
                 if (bundle.get("categoria") != null) {
                     if (bundle.get("categoria").toString() == "nombre")
-                        AsignaturaRest.getAsignaturaNombre(query, listAsignatura, getView());
+                        AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
                     else if (bundle.get("categoria").toString() == "ciclo")
-                        AsignaturaRest.getAsiganturaCiclo(query, listAsignatura, getView());
+                        AsignaturaRest.getAsignaturaCiclo(query, listAsignatura, viewPager, getView());
                     else
-                        AsignaturaRest.getAsignaturaNombre(query, listAsignatura, getView());
+                        AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
                 }
                 else
-                    AsignaturaRest.getAsignaturaNombre(query, listAsignatura, getView());
+                    AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
 
                 return true;
             }
@@ -134,7 +136,7 @@ public class FragmentAsignatura extends Fragment {
 
                 break;
             case R.id.deleteAsignatura:
-                AsignaturaRest.deleteAsigantura(item, listAsignatura, getView());
+                AsignaturaRest.deleteAsignatura(item, listAsignatura, viewPager, getView());
         }
         return super.onContextItemSelected(item);
     }

@@ -28,12 +28,12 @@
         "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_email_black.png"
     },
     {
-        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_send_white.png",
-        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_send_white.png"
-    },
-    {
         "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_access_time_black.png",
         "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_access_time_black.png"
+    },
+    {
+        "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_send_white.png",
+        "source": "C:\\ProyectosAndroid\\Academia\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_send_white.png"
     },
     {
         "merged": "C:\\ProyectosAndroid\\Academia\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_search_white.png",
