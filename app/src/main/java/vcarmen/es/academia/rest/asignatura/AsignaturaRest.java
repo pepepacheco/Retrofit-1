@@ -13,13 +13,16 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import vcarmen.es.academia.R;
+import vcarmen.es.academia.model.Alumno;
 import vcarmen.es.academia.model.Asignatura;
 import vcarmen.es.academia.rest.ApiClient;
+import vcarmen.es.academia.view.CustomAnimation;
 import vcarmen.es.academia.view.adapters.CustomListAdapter;
 
 public final class AsignaturaRest {
-    private static RestAdapter restAdapter;
-    private static AsignaturaService asignaturaService;
+    private static final RestAdapter restAdapter;
+    private static final AsignaturaService asignaturaService;
+    private static boolean deshacer = false;
 
     static {
         restAdapter = ApiClient.getAdapter();
@@ -110,18 +113,37 @@ public final class AsignaturaRest {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Asignatura asignatura = (Asignatura) listAsignatura.getAdapter().getItem(info.position);
 
-        asignaturaService.deleteAsignatura(asignatura.getId(), new Callback<List<Asignatura>>() {
-            @Override
-            public void success(List<Asignatura> asignaturas, Response response) {
-                Snackbar.make(view, "Asignatura " + asignatura.getNombre() + " Eliminada", Snackbar.LENGTH_LONG).show();
-                AsignaturaRest.getAsignaturas(listAsignatura, viewPager, view);
-            }
+        final View row = CustomAnimation.getViewByPosition(info.position, listAsignatura);
 
+        CustomAnimation.startAnimationRight(view, listAsignatura, row);
+
+        Snackbar.make(view, "Asignatura " + asignatura.getNombre() + " Eliminada", Snackbar.LENGTH_LONG).setAction("Deshacer", new View.OnClickListener() {
             @Override
-            public void failure(RetrofitError error) {
-                errorRequest(view, error);
+            public void onClick(View viewClick) {
+                CustomAnimation.startAnimationLeft(view, listAsignatura, row);
+                deshacer = true;
             }
-        });
+        }).setCallback(new Snackbar.Callback() {
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                super.onDismissed(snackbar, event);
+                if (!deshacer) {
+                    asignaturaService.deleteAsignatura(asignatura.getId(), new Callback<List<Asignatura>>() {
+                        @Override
+                        public void success(List<Asignatura> asignaturas, Response response) {
+                            getAsignaturas(listAsignatura, viewPager, view);
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            errorRequest(view, error);
+                        }
+                    });
+                }
+                else
+                    deshacer = false;
+            }
+        }).show();
     }
 
     private static void errorRequest(View view, RetrofitError error) {

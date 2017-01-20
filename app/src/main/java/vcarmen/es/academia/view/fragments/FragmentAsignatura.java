@@ -93,33 +93,33 @@ public class FragmentAsignatura extends Fragment {
         if (searchView != null) {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
             searchView.setIconifiedByDefault(false);
-        }
 
-        SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener() {
+            SearchView.OnQueryTextListener searchListener = new SearchView.OnQueryTextListener() {
 
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                if (bundle.get("categoria") != null) {
-                    if (bundle.get("categoria").toString() == "nombre")
-                        AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
-                    else if (bundle.get("categoria").toString() == "ciclo")
-                        AsignaturaRest.getAsignaturaCiclo(query, listAsignatura, viewPager, getView());
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    if (bundle.get("categoria") != null) {
+                        if (bundle.get("categoria").toString().equals("nombre"))
+                            AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
+                        else if (bundle.get("categoria").toString().equals("ciclo"))
+                            AsignaturaRest.getAsignaturaCiclo(query, listAsignatura, viewPager, getView());
+                        else
+                            AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
+                    }
                     else
                         AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
+
+                    return true;
                 }
-                else
-                    AsignaturaRest.getAsignaturaNombre(query, listAsignatura, viewPager, getView());
 
-                return true;
-            }
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    return true;
+                }
+            };
 
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return true;
-            }
-        };
-
-        searchView.setOnQueryTextListener(searchListener);
+            searchView.setOnQueryTextListener(searchListener);
+        }
     }
 
     @Override

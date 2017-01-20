@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
@@ -17,8 +16,6 @@ import vcarmen.es.academia.model.Alumno;
 import vcarmen.es.academia.rest.alumno.AlumnoRest;
 
 public class ActivityCreateAlumno extends AppCompatActivity {
-    private Toolbar toolbar;
-    private FloatingActionButton enviar;
     private Alumno alumno;
     private TextInputEditText dni, nombre, apellidos, eMail;
     private Drawable clear;
@@ -28,7 +25,7 @@ public class ActivityCreateAlumno extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_alumno);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Nuevo Alumno");
@@ -143,7 +140,7 @@ public class ActivityCreateAlumno extends AppCompatActivity {
             }
         });
 
-        enviar = (FloatingActionButton) findViewById(R.id.buttonEnviar);
+        FloatingActionButton enviar = (FloatingActionButton) findViewById(R.id.buttonEnviar);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

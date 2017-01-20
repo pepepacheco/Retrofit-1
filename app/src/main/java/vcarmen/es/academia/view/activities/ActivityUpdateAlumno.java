@@ -16,8 +16,6 @@ import vcarmen.es.academia.model.Alumno;
 import vcarmen.es.academia.rest.alumno.AlumnoRest;
 
 public class ActivityUpdateAlumno extends AppCompatActivity {
-    private Toolbar toolbar;
-    private FloatingActionButton enviar;
     private Alumno alumno;
     private TextInputEditText dni, nombre, apellidos, eMail;
     private Drawable clear;
@@ -27,7 +25,7 @@ public class ActivityUpdateAlumno extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_alumno);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Editar Alumno");
@@ -146,7 +144,7 @@ public class ActivityUpdateAlumno extends AppCompatActivity {
             }
         });
 
-        enviar = (FloatingActionButton) findViewById(R.id.buttonEnviar);
+        FloatingActionButton enviar = (FloatingActionButton) findViewById(R.id.buttonEnviar);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -15,11 +15,13 @@ import retrofit.client.Response;
 import vcarmen.es.academia.R;
 import vcarmen.es.academia.model.Alumno;
 import vcarmen.es.academia.rest.ApiClient;
+import vcarmen.es.academia.view.CustomAnimation;
 import vcarmen.es.academia.view.adapters.CustomListAdapter;
 
 public final class AlumnoRest {
-    private static RestAdapter restAdapter = ApiClient.getAdapter();
-    private static AlumnoService alumnoService;
+    private final static RestAdapter restAdapter;
+    private final static AlumnoService alumnoService;
+    private static boolean deshacer = false;
 
     static {
         restAdapter = ApiClient.getAdapter();
@@ -101,21 +103,40 @@ public final class AlumnoRest {
     }
 
     public static void deleteAlumno(MenuItem item, final ListView listAlumno, final ViewPager viewPager, final View view) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        final AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final Alumno alumno = (Alumno) listAlumno.getAdapter().getItem(info.position);
 
-        alumnoService.deleteAlumno(alumno.getId(), new Callback<List<Alumno>>() {
-            @Override
-            public void success(List<Alumno> alumnos, Response response) {
-                Snackbar.make(view, "Alumno " + alumno.getNombre() + " " + alumno.getApellidos() + " Eliminado", Snackbar.LENGTH_LONG).show();
-                getAlumnos(listAlumno, viewPager, view);
-            }
+        final View row = CustomAnimation.getViewByPosition(info.position, listAlumno);
 
+        CustomAnimation.startAnimationRight(view, listAlumno, row);
+
+        Snackbar.make(view, "Alumno " + alumno.getNombre() + " " + alumno.getApellidos() + " Eliminado", Snackbar.LENGTH_LONG).setAction("Deshacer", new View.OnClickListener() {
             @Override
-            public void failure(RetrofitError error) {
-                errorRequest(view, error);
+            public void onClick(View viewClick) {
+                CustomAnimation.startAnimationLeft(view, listAlumno, row);
+                deshacer = true;
             }
-        });
+        }).setCallback(new Snackbar.Callback() {
+            @Override
+            public void onDismissed(Snackbar snackbar, int event) {
+                super.onDismissed(snackbar, event);
+                if (!deshacer) {
+                    alumnoService.deleteAlumno(alumno.getId(), new Callback<List<Alumno>>() {
+                        @Override
+                        public void success(List<Alumno> alumnos, Response response) {
+                            getAlumnos(listAlumno, viewPager, view);
+                        }
+
+                        @Override
+                        public void failure(RetrofitError error) {
+                            errorRequest(view, error);
+                        }
+                    });
+                }
+                else
+                    deshacer = false;
+            }
+        }).show();
     }
 
     private static void errorRequest(View view, RetrofitError error) {

@@ -10,13 +10,10 @@ import retrofit.http.PUT;
 import retrofit.http.Path;
 import vcarmen.es.academia.model.Alumno;
 
-public interface AlumnoService {
+interface AlumnoService {
 
     @GET("/alumno")
     void getAlumnos(Callback<List<Alumno>> callback);
-
-    @GET("/alumno/{id}")
-    void getAlumnoId(@Path("id") int id, Callback<List<Alumno>> callback);
 
     @GET("/alumno/nombre/{nombre}")
     void getAlumnoNombre(@Path("nombre") String nombre, Callback<List<Alumno>> callback);

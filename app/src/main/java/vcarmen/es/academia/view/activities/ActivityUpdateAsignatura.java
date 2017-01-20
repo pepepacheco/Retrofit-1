@@ -17,8 +17,6 @@ import vcarmen.es.academia.model.Asignatura;
 import vcarmen.es.academia.rest.asignatura.AsignaturaRest;
 
 public class ActivityUpdateAsignatura extends AppCompatActivity {
-    private Toolbar toolbar;
-    private FloatingActionButton enviar;
     private Asignatura asignatura;
     private TextInputEditText nombre, ciclo, curso, horas;
     private Drawable clear;
@@ -28,7 +26,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_asignatura);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Editar Asignatura");
@@ -37,7 +35,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
         clear.setTint(Color.GRAY);
 
         nombre = (TextInputEditText) findViewById(R.id.inputNombreAsignatura);
-        nombre.setText(getIntent().getStringExtra("nombre").toString());
+        nombre.setText(getIntent().getStringExtra("nombre"));
         nombre.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -65,7 +63,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
         });
 
         ciclo = (TextInputEditText) findViewById(R.id.inputCicloAsigantura);
-        ciclo.setText(getIntent().getStringExtra("ciclo").toString());
+        ciclo.setText(getIntent().getStringExtra("ciclo"));
         ciclo.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -93,7 +91,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
         });
 
         curso = (TextInputEditText) findViewById(R.id.inputCursoAsignatura);
-        curso.setText(getIntent().getStringExtra("curso").toString());
+        curso.setText(getIntent().getStringExtra("curso"));
         curso.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -121,7 +119,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
         });
 
         horas = (TextInputEditText) findViewById(R.id.inputHorasAsignatura);
-        horas.setText(getIntent().getIntExtra("horas", 0) + "");
+        horas.setText(String.valueOf(getIntent().getIntExtra("horas", 0)));
         horas.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
@@ -148,7 +146,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
             }
         });
 
-        enviar = (FloatingActionButton) findViewById(R.id.buttonEnviarAsignatura);
+        FloatingActionButton enviar = (FloatingActionButton) findViewById(R.id.buttonEnviarAsignatura);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

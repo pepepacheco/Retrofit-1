@@ -13,28 +13,27 @@ import vcarmen.es.academia.view.fragments.FragmentMatricula;
 import vcarmen.es.academia.view.adapters.ViewPagerAdapter;
 
 public class MainActivity extends AppCompatActivity {
-    private Toolbar toolbar;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
 
-        if (getIntent().getIntExtra("soy", 0) == 1)
-            tabLayout.getTabAt(1).select();
+        if (getIntent().getIntExtra("soy", 0) == 1) {
+            if (tabLayout.getTabAt(1) != null)
+                tabLayout.getTabAt(1).select();
+        }
     }
 
     private void setupViewPager (ViewPager viewPager) {
@@ -43,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFragment(new FragmentAsignatura(), "Asignatura");
         adapter.addFragment(new FragmentMatricula(), "Matricula");
         viewPager.setAdapter(adapter);
+        viewPager.setOffscreenPageLimit(2); // 3 ViewPagger a la vez
     }
 
 }

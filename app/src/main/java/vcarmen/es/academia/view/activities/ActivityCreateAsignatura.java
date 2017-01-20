@@ -16,8 +16,6 @@ import vcarmen.es.academia.model.Asignatura;
 import vcarmen.es.academia.rest.asignatura.AsignaturaRest;
 
 public class ActivityCreateAsignatura extends AppCompatActivity {
-    private Toolbar toolbar;
-    private FloatingActionButton enviar;
     private Asignatura asignatura;
     private TextInputEditText nombre, ciclo, curso, horas;
     private Drawable clear;
@@ -27,7 +25,7 @@ public class ActivityCreateAsignatura extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_asignatura);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Editar Asignatura");
@@ -143,7 +141,7 @@ public class ActivityCreateAsignatura extends AppCompatActivity {
             }
         });
 
-        enviar = (FloatingActionButton) findViewById(R.id.buttonEnviarAsignatura);
+        FloatingActionButton enviar = (FloatingActionButton) findViewById(R.id.buttonEnviarAsignatura);
         enviar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

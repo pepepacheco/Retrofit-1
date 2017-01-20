@@ -2,7 +2,7 @@ package vcarmen.es.academia.rest.matricula;
 
 import java.util.List;
 import retrofit.Callback;
-import retrofit.http.Body;
+
 import retrofit.http.DELETE;
 import retrofit.http.GET;
 import retrofit.http.POST;

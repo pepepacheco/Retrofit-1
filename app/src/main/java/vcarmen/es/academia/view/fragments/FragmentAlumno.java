@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SearchView;
@@ -101,9 +100,9 @@ public class FragmentAlumno extends Fragment {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if (bundle.get("categoria") != null) {
-                    if (bundle.get("categoria").toString() == "dni")
+                    if (bundle.get("categoria").toString().equals("dni"))
                         AlumnoRest.getAlumnoDni(query, listAlumno, viewPager, getView());
-                    else if (bundle.get("categoria").toString() == "nombre")
+                    else if (bundle.get("categoria").toString().equals("nombre"))
                         AlumnoRest.getAlumnoNombre(query, listAlumno, viewPager, getView());
                     else
                         AlumnoRest.getAlumnoNombre(query, listAlumno, viewPager, getView());
