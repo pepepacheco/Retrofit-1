@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-
 import vcarmen.es.academia.R;
 import vcarmen.es.academia.model.Asignatura;
 import vcarmen.es.academia.rest.asignatura.AsignaturaRest;
@@ -151,7 +150,7 @@ public class ActivityUpdateAsignatura extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 asignatura = new Asignatura(null, nombre.getText().toString(), ciclo.getText().toString(), curso.getText().toString(), Integer.parseInt(horas.getText().toString()));
-                AsignaturaRest.postAsigantura(view, asignatura);
+                AsignaturaRest.putAsigantura(view, asignatura);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("soy", 1);
                 startActivity(intent);

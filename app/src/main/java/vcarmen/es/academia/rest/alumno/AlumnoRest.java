@@ -79,8 +79,7 @@ public final class AlumnoRest {
     public static void postAlumno(final View view, Alumno alumno) {
         alumnoService.postAlumno(alumno, new Callback<Alumno>() {
             @Override
-            public void success(Alumno alumno, Response response) {
-            }
+            public void success(Alumno alumno, Response response) {}
 
             @Override
             public void failure(RetrofitError error) {
@@ -92,8 +91,7 @@ public final class AlumnoRest {
     public static void putAlumno(final View view, Alumno alumno) {
         alumnoService.putAlumno(alumno, new Callback<Alumno>() {
             @Override
-            public void success(Alumno alumno, Response response) {
-            }
+            public void success(Alumno alumno, Response response) {}
 
             @Override
             public void failure(RetrofitError error) {

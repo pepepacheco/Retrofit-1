@@ -2,7 +2,7 @@
 <android.support.v4.widget.SwipeRefreshLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/refesh_layout"
+    android:id="@+id/refresh_layoutAlumno"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     app:layout_scrollFlags="scroll|enterAlways"
     android:layout_height="match_parent"

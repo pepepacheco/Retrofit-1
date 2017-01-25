@@ -5,7 +5,7 @@ import com.google.gson.GsonBuilder;
 import retrofit.RestAdapter;
 import retrofit.converter.GsonConverter;
 
-public class ApiClient {
+public final class ApiClient {
     public static final String URL = "35.163.178.255";
     public static final String PORT = "3000";
     private static RestAdapter restAdapter = null;
@@ -24,6 +24,5 @@ public class ApiClient {
         return restAdapter;
     }
 
-    private ApiClient () {
-    }
+    private ApiClient () {}
 }

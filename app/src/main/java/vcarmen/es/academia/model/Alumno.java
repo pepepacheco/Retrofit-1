@@ -58,22 +58,8 @@ public class Alumno {
         this.nombre = nombre;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public String toString() {
-        return "Alumno{" +
-                "id=" + id +
-                ", dni='" + dni + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", email='" + email + '\'' +
-                '}';
+        return nombre + " " + apellidos;
     }
 }

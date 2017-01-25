@@ -28,7 +28,7 @@ import vcarmen.es.academia.view.activities.ActivityUpdateAlumno;
 public class FragmentAlumno extends Fragment {
     private ListView listAlumno;
     private TabLayout tabLayout;
-    private SwipeRefreshLayout refesh;
+    private SwipeRefreshLayout refresh;
     private Bundle bundle = new Bundle();
     private ViewPager viewPager;
 
@@ -60,7 +60,7 @@ public class FragmentAlumno extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String nombre = ((Alumno) adapterView.getAdapter().getItem(i)).getNombre();
                 String apellidos = ((Alumno) adapterView.getAdapter().getItem(i)).getApellidos();
-                Snackbar.make(view, nombre + " " + apellidos, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, nombre + " " + apellidos, Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -72,13 +72,13 @@ public class FragmentAlumno extends Fragment {
             }
         });
 
-        refesh = (SwipeRefreshLayout) getView().findViewById(R.id.refesh_layout);
-        refesh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        refresh = (SwipeRefreshLayout) getView().findViewById(R.id.refresh_layoutAlumno);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 AlumnoRest.getAlumnos(listAlumno, viewPager, getView());
-                if (refesh.isRefreshing()) {
-                    refesh.setRefreshing(false);
+                if (refresh.isRefreshing()) {
+                    refresh.setRefreshing(false);
                 }
             }
         });

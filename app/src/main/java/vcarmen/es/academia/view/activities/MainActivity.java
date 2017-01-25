@@ -5,7 +5,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import vcarmen.es.academia.R;
 import vcarmen.es.academia.view.fragments.FragmentAlumno;
 import vcarmen.es.academia.view.fragments.FragmentAsignatura;
@@ -29,11 +28,17 @@ public class MainActivity extends AppCompatActivity {
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-
-        if (getIntent().getIntExtra("soy", 0) == 1) {
-            if (tabLayout.getTabAt(1) != null)
-                tabLayout.getTabAt(1).select();
+        switch (getIntent().getIntExtra("soy", 0)) {
+            case 1:
+                if (tabLayout.getTabAt(1) != null)
+                    tabLayout.getTabAt(1).select();
+                break;
+            case 2:
+                if (tabLayout.getTabAt(2) != null)
+                    tabLayout.getTabAt(2).select();
+                break;
         }
+
     }
 
     private void setupViewPager (ViewPager viewPager) {

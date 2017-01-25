@@ -30,56 +30,23 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputLayoutDni"
-                    android:forceHasOverlappingRendering="true"
+                    android:id="@+id/inputLayoutAlumnoMatricula"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:layout_toEndOf="@+id/iconDni">
+                    android:layout_toEndOf="@+id/iconAlumnoMatricula">
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputDni"
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinnerAlumnoMatricula"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:maxLines="1"
-                        android:hint="DNI">
-                    </android.support.design.widget.TextInputEditText>
+                        android:spinnerMode="dropdown"
+                        />
                 </android.support.design.widget.TextInputLayout>
 
                 <ImageView
-                    android:id="@+id/iconDni"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:tint="#777"
-                    android:src="@mipmap/ic_credit_card_black"
-                    android:layout_centerVertical="true"
-                    android:layout_alignParentStart="true" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputLayoutNombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="20dp"
-                    android:layout_toEndOf="@+id/iconNombre">
-
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputNombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:hint="Nombre" />
-                </android.support.design.widget.TextInputLayout>
-
-                <ImageView
-                    android:id="@+id/iconNombre"
+                    android:id="@+id/iconAlumnoMatricula"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:tint="#777"
@@ -89,31 +56,30 @@
 
             </RelativeLayout>
 
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputLayoutApellidos"
+                    android:id="@+id/inputLayoutAsignaturaMatricula"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:layout_toEndOf="@+id/iconApellidos">
+                    android:layout_toEndOf="@+id/iconAsignaturaMatricula">
 
-                    <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputApellidos"
+                    <android.support.v7.widget.AppCompatSpinner
+                        android:id="@+id/spinnerAsignaturaMatricula"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPersonName"
-                        android:maxLines="1"
-                        android:hint="Apellidos" />
+                        android:spinnerMode="dialog"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <ImageView
-                    android:id="@+id/iconApellidos"
+                    android:id="@+id/iconAsignaturaMatricula"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:tint="#777"
-                    android:src="@mipmap/ic_person_pin_black"
+                    android:src="@mipmap/ic_subject_black"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true" />
 
@@ -123,32 +89,65 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <android.support.design.widget.TextInputLayout
-                    android:id="@+id/inputLayoutEmail"
+                    android:id="@+id/inputLayoutFechaInicio"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="20dp"
-                    android:layout_toEndOf="@+id/iconEmail">
+                    android:layout_toEndOf="@+id/iconFechaInicio">
 
                     <android.support.design.widget.TextInputEditText
-                        android:id="@+id/inputEmail"
+                        android:id="@+id/inputFechaInicio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
+                        android:inputType="none"
+                        android:textIsSelectable="true"
                         android:maxLines="1"
-                        android:hint="e-Mail" />
+                        android:focusable="false"
+                        android:hint="Fecha Inicio" />
                 </android.support.design.widget.TextInputLayout>
 
                 <ImageView
-                    android:id="@+id/iconEmail"
+                    android:id="@+id/iconFechaInicio"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:tint="#777"
-                    android:src="@mipmap/ic_email_black"
+                    android:src="@mipmap/ic_date_black"
                     android:layout_centerVertical="true"
                     android:layout_alignParentStart="true" />
             </RelativeLayout>
 
-            <android.support.design.widget.FloatingActionButton android:id="@+id/buttonEnviar"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.design.widget.TextInputLayout
+                    android:id="@+id/inputLayoutFechaFin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="20dp"
+                    android:layout_toEndOf="@+id/iconFechaFin">
+
+                    <android.support.design.widget.TextInputEditText
+                        android:id="@+id/inputFechaFin"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="none"
+                        android:textIsSelectable="true"
+                        android:maxLines="1"
+                        android:focusable="false"
+                        android:hint="Fecha Fin" />
+                </android.support.design.widget.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/iconFechaFin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tint="#777"
+                    android:src="@mipmap/ic_date_black"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentStart="true" />
+            </RelativeLayout>
+
+            <android.support.design.widget.FloatingActionButton android:id="@+id/buttonEnviarMatricula"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_send_white"

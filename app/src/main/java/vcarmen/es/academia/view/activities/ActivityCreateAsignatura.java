@@ -28,7 +28,7 @@ public class ActivityCreateAsignatura extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("Editar Asignatura");
+        getSupportActionBar().setTitle("Nueva Asignatura");
 
         clear = getDrawable(R.mipmap.ic_clear_black);
         clear.setTint(Color.GRAY);
@@ -146,7 +146,7 @@ public class ActivityCreateAsignatura extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 asignatura = new Asignatura(null, nombre.getText().toString(), ciclo.getText().toString(), curso.getText().toString(), Integer.parseInt(horas.getText().toString()));
-                AsignaturaRest.putAsigantura(view, asignatura);
+                AsignaturaRest.postAsigantura(view, asignatura);
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("soy", 1);
                 startActivity(intent);

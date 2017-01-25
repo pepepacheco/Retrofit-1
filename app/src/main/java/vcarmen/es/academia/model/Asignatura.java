@@ -54,26 +54,8 @@ public class Asignatura {
         this.nombre = nombre;
     }
 
-    public void setCiclo(String ciclo) {
-        this.ciclo = ciclo;
-    }
-
-    public void setCurso(String curso) {
-        this.curso = curso;
-    }
-
-    public void setHoras(Integer horas) {
-        this.horas = horas;
-    }
-
     @Override
     public String toString() {
-        return "Asignatura{" +
-                "id=" + id +
-                ", horas=" + horas +
-                ", nombre='" + nombre + '\'' +
-                ", ciclo='" + ciclo + '\'' +
-                ", curso='" + curso + '\'' +
-                '}';
+        return nombre;
     }
 }

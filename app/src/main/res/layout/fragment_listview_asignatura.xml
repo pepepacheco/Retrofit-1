@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/refesh_layout"
+<android.support.v4.widget.SwipeRefreshLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/refresh_layoutAsignatura"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    app:layout_scrollFlags="scroll|enterAlways"
     android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:fillViewport="true">
+    android:layout_width="match_parent">
+
         <ListView
             android:id="@+id/listAsignatura"
             android:layout_width="match_parent"

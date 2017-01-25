@@ -1,41 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:layout_weight="10"
+    android:shrinkColumns="*"
+    android:stretchColumns="*">
+    <TableRow>
+        <TextView
+            android:layout_span="1"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textAlignment="textEnd"
+            android:id="@+id/textViewNombreMatricula"
+            android:text="Nombre: "
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:textAlignment="center"
-        android:id="@+id/textViewNombreMatricula"
-        android:text="Nombre: "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_span="9"
+            android:id="@+id/resultadoNombreMatricula"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </TableRow>
 
-    <TextView
-        android:textAlignment="center"
-        android:id="@+id/textViewApellidosMatricula"
-        android:text="Apellidos: "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <TableRow>
+        <TextView
+            android:layout_span="1"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textAlignment="textEnd"
+            android:id="@+id/textViewApelldiosMatricula"
+            android:text="Apellidos: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:textAlignment="center"
-        android:id="@+id/textViewAsinaturaMatricula"
-        android:text="Asignatura: "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_span="9"
+            android:maxLines="2"
+            android:id="@+id/resultadoApellidosMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
 
-    <TextView
-        android:textAlignment="center"
-        android:id="@+id/textViewFechaInicioMatricula"
-        android:text="Fecha de Inicio : "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <TableRow>
+        <TextView
+            android:layout_span="1"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textAlignment="textEnd"
+            android:id="@+id/textViewAsignaturaMatricula"
+            android:text="Asignatura: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <TextView
-        android:textAlignment="center"
-        android:id="@+id/textViewFechaFinMatricula"
-        android:text="Fecha de Finalizacion: "
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:layout_span="9"
+            android:id="@+id/resultadoAsignaturaMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
 
-</LinearLayout>
+    <TableRow>
+        <TextView
+            android:layout_span="1"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textAlignment="textEnd"
+            android:id="@+id/textViewFechaInicioMatricula"
+            android:text="Fecha Inicio: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_span="9"
+            android:id="@+id/resultadoFechaInicioMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_span="1"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:textAlignment="textEnd"
+            android:id="@+id/textViewFechaFinoMatricula"
+            android:text="Fecha Fin: "
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_span="9"
+            android:id="@+id/resultadoFechaFinMatricula"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </TableRow>
+
+</TableLayout>

@@ -13,7 +13,6 @@ import retrofit.RestAdapter;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
 import vcarmen.es.academia.R;
-import vcarmen.es.academia.model.Alumno;
 import vcarmen.es.academia.model.Asignatura;
 import vcarmen.es.academia.rest.ApiClient;
 import vcarmen.es.academia.view.CustomAnimation;
@@ -85,9 +84,7 @@ public final class AsignaturaRest {
     public static void postAsigantura(final View view, Asignatura asignatura) {
         asignaturaService.postAsignatura(asignatura, new Callback<Asignatura>() {
             @Override
-            public void success(Asignatura asignatura, Response response) {
-
-            }
+            public void success(Asignatura asignatura, Response response) {}
 
             @Override
             public void failure(RetrofitError error) {
@@ -99,8 +96,7 @@ public final class AsignaturaRest {
     public static void putAsigantura(final View view, Asignatura asignatura) {
         asignaturaService.putAsignatura(asignatura, new Callback<Asignatura>() {
             @Override
-            public void success(Asignatura asignatura, Response response) {
-            }
+            public void success(Asignatura asignatura, Response response) {}
 
             @Override
             public void failure(RetrofitError error) {

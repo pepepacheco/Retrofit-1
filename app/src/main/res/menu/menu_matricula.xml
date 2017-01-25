@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.toolbar.MainActivity" >
+
+    <item android:id="@+id/action_add"
+        android:icon="@mipmap/ic_add_white"
+        android:title="Nuevo"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item android:id="@+id/action_search"
+        android:icon="@mipmap/ic_search_white"
+        android:title="Buscar"
+        app:showAsAction="ifRoom|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
+
+    <item android:id="@+id/categoria"
+        android:icon="@mipmap/ic_keyboard_arrow_down_white"
+        android:title="Buscar por:"
+        app:showAsAction="ifRoom|collapseActionView">
+        <menu>
+            <group
+                android:checkableBehavior="single">
+                <item android:id="@+id/categoriaDNIAlumnoMatricula"
+                    android:title="DNI Alumno"
+                    app:showAsAction="ifRoom|collapseActionView" />
+
+                <item android:id="@+id/categoriaNombreAsignaturaMatricula"
+                    android:title="Nombre Asignatura"
+                    app:showAsAction="ifRoom|collapseActionView" />
+            </group>
+
+        </menu>
+
+    </item>
+
+</menu>

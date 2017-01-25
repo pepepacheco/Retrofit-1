@@ -28,7 +28,7 @@ import vcarmen.es.academia.view.activities.ActivityUpdateAsignatura;
 public class FragmentAsignatura extends Fragment {
     private ListView listAsignatura;
     private TabLayout tabLayout;
-    private SwipeRefreshLayout refesh;
+    private SwipeRefreshLayout refresh;
     private Bundle bundle = new Bundle();
     private ViewPager viewPager;
 
@@ -59,7 +59,7 @@ public class FragmentAsignatura extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String nombre = ((Asignatura) listAsignatura.getAdapter().getItem(i)).getNombre();
-                Snackbar.make(view, nombre, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, nombre, Snackbar.LENGTH_SHORT).show();
             }
         });
 
@@ -71,13 +71,13 @@ public class FragmentAsignatura extends Fragment {
             }
         });
 
-        refesh = (SwipeRefreshLayout) getView().findViewById(R.id.refesh_layout);
-        refesh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        refresh = (SwipeRefreshLayout) getView().findViewById(R.id.refresh_layoutAsignatura);
+        refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
                 AsignaturaRest.getAsignaturas(listAsignatura, viewPager, getView());
-                if (refesh.isRefreshing()) {
-                    refesh.setRefreshing(false);
+                if (refresh.isRefreshing()) {
+                    refresh.setRefreshing(false);
                 }
             }
         });
@@ -133,7 +133,6 @@ public class FragmentAsignatura extends Fragment {
         switch (item.getItemId()) {
             case R.id.updateAsignatura:
                 updateActivity(item);
-
                 break;
             case R.id.deleteAsignatura:
                 AsignaturaRest.deleteAsignatura(item, listAsignatura, viewPager, getView());
