@@ -3,6 +3,7 @@ package vcarmen.es.academia.view.activities;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -33,6 +34,7 @@ import vcarmen.es.academia.rest.matricula.MatriculaRest;
 public class ActivityUpdateMatricula extends AppCompatActivity  {
     private AppCompatSpinner alumno, asignatura;
     private TextInputEditText fechaInicio, fechaFin;
+    private CoordinatorLayout coordinatorLayout;
     private int posicionAlumnoSeleccionado = -1;
     private int posicionAsignaturaSeleccionada = -1;
     private Matricula matricula;
@@ -41,6 +43,8 @@ public class ActivityUpdateMatricula extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.input_matricula);
+
+        coordinatorLayout = (CoordinatorLayout) findViewById(R.id.coordinatorLayoutInputMatricula);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,7 +55,7 @@ public class ActivityUpdateMatricula extends AppCompatActivity  {
         asignatura = (AppCompatSpinner) findViewById(R.id.spinnerAsignaturaMatricula);
         matricula = getIntent().getParcelableExtra("matricula");
 
-        generateSpinner();
+        generateSpinner(coordinatorLayout);
         alumno.setEnabled(false);
         asignatura.setEnabled(false);
 
@@ -130,7 +134,7 @@ public class ActivityUpdateMatricula extends AppCompatActivity  {
         return super.onOptionsItemSelected(item);
     }
 
-    private void generateSpinner() {
+    private void generateSpinner(final View view) {
         RestAdapter restAdapter = ApiClient.getAdapter();
         AlumnoService alumnoService = restAdapter.create(AlumnoService.class);
 
@@ -156,7 +160,7 @@ public class ActivityUpdateMatricula extends AppCompatActivity  {
 
             @Override
             public void failure(RetrofitError error) {
-                MatriculaRest.errorRequest(getCurrentFocus(), error);
+                MatriculaRest.errorRequest(view, error);
             }
         });
 
@@ -179,7 +183,7 @@ public class ActivityUpdateMatricula extends AppCompatActivity  {
 
             @Override
             public void failure(RetrofitError error) {
-                MatriculaRest.errorRequest(getCurrentFocus(), error);
+                MatriculaRest.errorRequest(view, error);
             }
         });
     }
